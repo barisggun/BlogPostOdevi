@@ -1,0 +1,26 @@
+﻿@using EntityLayer
+@model List<Blog>
+
+<a asp-action="Create" class="btn btn-primary mb-3">Blog yazısı oluştur</a>
+
+<div class="col-md-6">
+    @foreach (var item in Model)
+    {
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <div class="col p-4 d-flex flex-column position-static">
+                <a asp-action="Edit" asp-route-id="@item.BlogId" class="fa-solid fa-pen-to-square"></a>
+                <a asp-action="Delete" asp-route-id="@item.BlogId" class="fa-solid fa-trash"></a>
+                <strong class="d-inline-block mb-2 text-primary">@item.Category</strong>
+                <h3 class="mb-0">@item.BlogTitle</h3>
+                <div class="mb-1 text-muted">@item.BlogCreateDate</div>
+
+                <p class="card-text mb-auto">@item.BlogContent</p>
+            </div>
+            <div class="col-auto d-none d-lg-block">
+
+                <img src="~/images/blog/@item.BlogImage" class="img-circle img-bordered-sm" alt="user image" style="width:200px;height:300px;" />
+
+            </div>
+        </div>
+    }
+</div>
